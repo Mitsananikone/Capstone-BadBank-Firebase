@@ -1,9 +1,9 @@
 const express = require('express');
 const { initializeApp } = require('firebase/app');
 const { getDatabase, ref, push, get, update } = require('firebase/database');
-const app = express();
+const functions = require('firebase-functions');
 const cors = require('cors');
-const dal = require("./dal");
+const { create, find, findOne, updateBalance } = require("./dal");
 
 const firebaseConfig = {
   apiKey: "AIzaSyAtqpcqqfcQB-njQq7Pmb7XGOfrjmJkblU",
@@ -18,6 +18,8 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const database = getDatabase(firebaseApp);
 
+const app = express();
+
 // Serve static files from the public directory
 app.use(express.static('public'));
 app.use(cors());
@@ -25,12 +27,8 @@ app.use(cors());
 // Create user account
 app.get('/account/create/:name/:email/:password', (req, res) => {
   const { name, email, password } = req.params;
-  const usersRef = ref(database, 'users');
-  const newUserRef = push(usersRef);
-  update(newUserRef, { name, email, password })
-    .then(() => {
-      const userId = newUserRef.key;
-      const user = { id: userId, name, email, password };
+  create(name, email, password)
+    .then((user) => {
       console.log(user);
       res.send(user);
     })
@@ -43,22 +41,39 @@ app.get('/account/create/:name/:email/:password', (req, res) => {
 // Login user
 app.get('/account/login/:email/:password', (req, res) => {
   const { email, password } = req.params;
-  res.send({ email, password });
+  findOne(email)
+    .then((user) => {
+      if (user && user.password === password) {
+        res.send(user);
+      } else {
+        res.sendStatus(401);
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      res.sendStatus(500);
+    });
 });
 
 // All accounts
 app.get('/account/all', (req, res) => {
-  const usersRef = ref(database, 'users');
-  get(usersRef)
-    .then(dataSnapshot => {
-      const users = [];
-      dataSnapshot.forEach(childSnapshot => {
-        const userId = childSnapshot.key;
-        const user = { id: userId, ...childSnapshot.val() };
-        users.push(user);
-      });
+  find()
+    .then((users) => {
       console.log(users);
       res.send(users);
+    })
+    .catch(error => {
+      console.error(error);
+      res.sendStatus(500);
+    });
+});
+
+// Update balance
+app.get('/account/update/:email/:amount', (req, res) => {
+  const { email, amount } = req.params;
+  updateBalance(email, Number(amount))
+    .then(() => {
+      res.sendStatus(200);
     })
     .catch(error => {
       console.error(error);
