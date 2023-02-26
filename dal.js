@@ -1,19 +1,23 @@
-// import { getDatabase, ref, push, get, update } from 'firebase/database';
-import { initializeApp } from 'firebase/app';
+var firebase = require('firebase/database');
+var getDatabase = firebase.getDatabase;
+var ref = firebase.ref;
+var push = firebase.push;
+var get = firebase.get;
+var update = firebase.update;
+var firebase = require('firebase/app');
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBHL4Bz-e1sBlSmZMi_2rcQf04ACfWxRko",
-    authDomain: "capstone-badbank-dfd1f.firebaseapp.com",
-    databaseURL: "https://capstone-badbank-dfd1f-default-rtdb.firebaseio.com",
-    projectId: "capstone-badbank-dfd1f",
-    storageBucket: "capstone-badbank-dfd1f.appspot.com",
-    messagingSenderId: "457999178063",
-    appId: "1:457999178063:web:2ae0bf5d495e908400cd3a"
-  
+  apiKey: "AIzaSyAtqpcqqfcQB-njQq7Pmb7XGOfrjmJkblU",
+  authDomain: "capstone-badbank-firebase.firebaseapp.com",
+  databaseURL: "https://capstone-badbank-firebase-default-rtdb.firebaseio.com",
+  projectId: "capstone-badbank-firebase",
+  storageBucket: "capstone-badbank-firebase.appspot.com",
+  messagingSenderId: "901970657534",
+  appId: "1:901970657534:web:01c01b54fde411e15d25af"
 };
 
 // Initialize Firebase using the configuration object
-initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
 // Get a reference to the Firebase Realtime Database
 const db = getDatabase();
@@ -105,4 +109,10 @@ function all() {
   });
 }
 
-// export { create, findOne, find, updateBalance as update, all };
+module.exports = {
+  create,
+  findOne,
+  find,
+  update: updateBalance,
+  all
+};

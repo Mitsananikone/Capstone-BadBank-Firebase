@@ -3,15 +3,16 @@ const { initializeApp } = require('firebase/app');
 const { getDatabase, ref, push, get, update } = require('firebase/database');
 const app = express();
 const cors = require('cors');
+const dal = require("./dal");
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBHL4Bz-e1sBlSmZMi_2rcQf04ACfWxRko",
-    authDomain: "capstone-badbank-dfd1f.firebaseapp.com",
-    databaseURL: "https://capstone-badbank-dfd1f-default-rtdb.firebaseio.com",
-    projectId: "capstone-badbank-dfd1f",
-    storageBucket: "capstone-badbank-dfd1f.appspot.com",
-    messagingSenderId: "457999178063",
-    appId: "1:457999178063:web:2ae0bf5d495e908400cd3a"
+  apiKey: "AIzaSyAtqpcqqfcQB-njQq7Pmb7XGOfrjmJkblU",
+  authDomain: "capstone-badbank-firebase.firebaseapp.com",
+  databaseURL: "https://capstone-badbank-firebase-default-rtdb.firebaseio.com",
+  projectId: "capstone-badbank-firebase",
+  storageBucket: "capstone-badbank-firebase.appspot.com",
+  messagingSenderId: "901970657534",
+  appId: "1:901970657534:web:01c01b54fde411e15d25af"
 };
 
 const firebaseApp = initializeApp(firebaseConfig);

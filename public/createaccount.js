@@ -23,7 +23,7 @@ function CreateAccount(){
       var data = await res.json();
       console.log(data);
     })();
-    props.setShow(false);
+    setShow(false);
   }
 
   function clearForm(){
