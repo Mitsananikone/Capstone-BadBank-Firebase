@@ -1,0 +1,27 @@
+{
+  "name": "capstone-badbank-firebase",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js --openssl-legacy-provider start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.2",
+    "firebase": "^9.17.1",
+    "mongodb": "^4.2.0",
+    "nodemon": "^2.0.20",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-router": "^6.8.1",
+    "react-router-dom": "^6.8.1",
+    "react-scripts": "^5.0.1"
+  }
+}
