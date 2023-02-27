@@ -38,22 +38,22 @@ app.get('/account/create/:name/:email/:password', (req, res) => {
     });
 });
 
-// Login user
-app.get('/account/login/:email/:password', (req, res) => {
-  const { email, password } = req.params;
-  findOne(email)
-    .then((user) => {
-      if (user && user.password === password) {
-        res.send(user);
-      } else {
-        res.sendStatus(401);
-      }
-    })
-    .catch(error => {
-      console.error(error);
-      res.sendStatus(500);
-    });
-});
+// // Login user
+// app.get('/account/login/:email/:password', (req, res) => {
+//   const { email, password } = req.params;
+//   findOne(email)
+//     .then((user) => {
+//       if (user && user.password === password) {
+//         res.send(user);
+//       } else {
+//         res.sendStatus(401);
+//       }
+//     })
+//     .catch(error => {
+//       console.error(error);
+//       res.sendStatus(500);
+//     });
+// });
 
 // All accounts
 app.get('/account/all', (req, res) => {
@@ -85,3 +85,21 @@ const port = 3000;
 app.listen(port, () => {
   console.log(`Running on port: ${port}`);
 });
+
+module.exports = function(api, options) {
+  return {
+    presets: [
+      [
+        "@babel/preset-env",
+        {
+          targets: {
+            node: "current"
+          }
+        }
+      ]
+    ],
+    plugins: [
+      "@babel/plugin-transform-arrow-functions"
+    ]
+  };
+};

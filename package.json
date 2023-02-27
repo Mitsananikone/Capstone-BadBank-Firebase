@@ -2,7 +2,8 @@
   "name": "capstone-badbank-firebase",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index,js",
+  "private": true,
   "scripts": {
     "start": "node index.js",
     "build": "react-scripts build",
@@ -13,15 +14,25 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@firebase/firestore": "^3.8.3",
     "cors": "^2.8.5",
     "express": "^4.16.2",
     "firebase": "^9.17.1",
+    "firestore": "^1.1.6",
     "mongodb": "^4.2.0",
     "nodemon": "^2.0.20",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
+    "react": "^16.7.0-alpha.2",
+    "react-dom": "^16.7.0-alpha.2",
     "react-router": "^6.8.1",
     "react-router-dom": "^6.8.1",
     "react-scripts": "^5.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/plugin-transform-arrow-functions": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
+    "babel-preset-env": "^1.7.0",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   }
 }

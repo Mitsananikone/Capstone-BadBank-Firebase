@@ -10,6 +10,9 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
 
+    <!-- Lodash for webpack -->
+    <script src="https://unpkg.com/lodash@4.17.20"></script>
+    
     <!-- don't use this in production: -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   </head>
@@ -18,10 +21,10 @@
     <div id="root"></div>
 
     <!-- load react -->
-    <script src="https://unpkg.com/react/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-router@5.2.1/umd/react-router.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-router-dom@5.2.1/umd/react-router-dom.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react@16.14.0/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16.14.0/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-router-dom@5.3.0/umd/react-router-dom.min.js" crossorigin></script>
+    
 
     <!-- load our react component. -->
     <script src="context.js" defer type="text/babel"></script>
@@ -35,6 +38,7 @@
     <script src="home.js" defer type="text/babel"></script>
     <script src="index.js" defer type="text/babel"></script>
 
+    <script src="dist/bundle.js"></script>
     <script src="../dal.js" type="module"></script>
 
   </body>
