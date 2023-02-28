@@ -1,7 +1,6 @@
 const express = require('express');
 const { initializeApp } = require('firebase/app');
 const { getDatabase, ref, push, get, update } = require('firebase/database');
-const functions = require('firebase-functions');
 const cors = require('cors');
 const { create, find, findOne, updateBalance } = require("./dal");
 
